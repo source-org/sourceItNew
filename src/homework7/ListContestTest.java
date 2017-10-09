@@ -1,19 +1,24 @@
 package homework7;
 
 import org.junit.Test;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class ListContestTest {
     private ArrayList<Integer> getArrayList(){
         ArrayList<Integer> a = new ArrayList<>();
+        Integer variable = 0;
         for(int i = 0; i < 3000; i++) {
-            Integer variable = Integer.MAX_VALUE;
+            if (i == 1000) {
+                variable = 1;
+            }
+            if (i == 2000) {
+                variable = 2;
+            }
             a.add(variable);
         }
         return a;
@@ -21,8 +26,14 @@ public class ListContestTest {
 
     private LinkedList<Integer> getLinkedList(){
         LinkedList<Integer> l = new LinkedList<>();
+        Integer variable = 0;
         for(int i = 0; i < 3000; i++) {
-            Integer variable = Integer.MAX_VALUE;
+            if (i == 1000) {
+                variable = 1;
+            }
+            if (i == 2000) {
+                variable = 2;
+            }
             l.add(variable);
         }
         return l;
@@ -33,23 +44,29 @@ public class ListContestTest {
         //arrange
         ListContest listContest = new ListContest();
         //action
-        int resultSize = listContest.arrayListOperations(getArrayList()).size();
+        ArrayList<Integer> result = listContest.arrayListOperations(getArrayList());
+
         //assertion
-        assertEquals(resultSize, 10);
+        //list 3000 el; 0-999 -> 2; 1000-1999-> 0; 2000-2499->1; 2500-2999->2;
+        assertEquals(3000, result.size());
+        assertEquals(new Integer(2), result.get(0));
+        assertEquals(new Integer(2), result.get(999));
+        assertEquals(new Integer(0), result.get(1000));
+        assertEquals(new Integer(0), result.get(1999));
+        assertEquals(new Integer(1), result.get(2000));
+        assertEquals(new Integer(1), result.get(2499));
+        assertEquals(new Integer(2), result.get(2500));
+        assertEquals(new Integer(2), result.get(2999));
     }
 
-   /* @Test(expected = InvalidParameterException.class)
-    public void testArrayListOperationsWithNullAsParameter() throws InvalidParameterException{
+    @Test(expected = NullPointerException.class)
+    public void testArrayListOperationsWithNullAsParameter() throws NullPointerException{
         //arrange
         ListContest listContest = new ListContest();
-        Object nullObject = new Object();
-        nullObject = null;
         //action
-        ArrayList <?> valueList = getArrayList();
-        listContest.arrayListOperations(valueList<nullObject>);
-        listContest.arrayListOperations(getArrayList()<nullObject>);
+        listContest.arrayListOperations(null);
 
-    }*/
+    }
 
     @Test(expected = IllegalStateException.class)
     public void testArrayListOperationsWithEmptyList()throws IllegalStateException {
@@ -64,7 +81,7 @@ public class ListContestTest {
     public void testArrayListOperationsWithSmallList() throws IndexOutOfBoundsException {
         //arrange
         ListContest listContest = new ListContest();
-        ArrayList<Integer> smallList = new ArrayList<>(1);
+        ArrayList<Integer> smallList = new ArrayList<>();
         smallList.add(1);
         //action
         listContest.arrayListOperations(smallList);
@@ -75,9 +92,18 @@ public class ListContestTest {
         //arrange
         ListContest listContest = new ListContest();
         //action
-        int resultSize = listContest.linkedListOperations(getLinkedList()).size();
+        LinkedList<Integer> result = listContest.linkedListOperations(getLinkedList());
         //assertion
-        assertEquals(resultSize, 10);
+        //list 3000 el; 0-999 -> 2; 1000-1999-> 0; 2000-2499->1; 2500-2999->2;
+        assertEquals(3000, result.size());
+        assertEquals(new Integer(2), result.get(0));
+        assertEquals(new Integer(2), result.get(999));
+        assertEquals(new Integer(0), result.get(1000));
+        assertEquals(new Integer(0), result.get(1999));
+        assertEquals(new Integer(1), result.get(2000));
+        assertEquals(new Integer(1), result.get(2499));
+        assertEquals(new Integer(2), result.get(2500));
+        assertEquals(new Integer(2), result.get(2999));
     }
 
     @Test(expected = NullPointerException.class)
@@ -105,5 +131,17 @@ public class ListContestTest {
         smallList.add(1);
         //action
         listContest.linkedListOperations(smallList);
+    }
+    @Test
+    public void testUniqueArrayListValues() {
+        //arrange
+        ListContest listContest = new ListContest();
+        //action
+        ArrayList<Integer> result = listContest.uniqueArray(getArrayList());
+        //assertion
+        assertEquals(3, result.size());
+        assertEquals(new Integer (0), result.get(0));
+        assertEquals(new Integer (1), result.get(1));
+        assertEquals(new Integer (2), result.get(2));
     }
 }

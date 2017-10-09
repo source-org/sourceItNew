@@ -18,9 +18,8 @@ public class Demo {
             Long startOperation = System.currentTimeMillis();
             listOperations.arrayListOperations(arrayList);
             System.out.println("List operation with ArrayList took: " + (System.currentTimeMillis() - startOperation) + " milliseconds");
-            startOperation = System.currentTimeMillis();
+            Long startOperation1 = System.currentTimeMillis();
             listOperations.linkedListOperations(linkedList);
-            System.out.println("List operation with LinkedList took: " + (System.currentTimeMillis() - startOperation) + " milliseconds");
-
+            System.out.println("List operation with LinkedList took: " + (System.currentTimeMillis() - startOperation1) + " milliseconds");
     }
 }
