@@ -27,21 +27,16 @@ public class ListOperations {
 
     public int maxOccurrences(List<Integer> list) {
         int counter = 0;
-        int index = 0;
         List <Integer> interimList = new ArrayList<>();
         for (int i=0; i < list.size()-1; i++){
-            for (int j=0; j < list.size(); i++) {
+            for (int j=0; j < list.size(); j++) {
                 if (list.get(i).equals(list.get(j))) {
                     counter++;
-                } else if (index !=i) {
-                    interimList.add(counter);
-                    counter = 0;
-                    index++;
                 }
             }
+            interimList.add(counter);
+            counter = 0;
         }
-        interimList.add(counter);
-        Integer max = Collections.max(interimList);
-        return max;
+        return Collections.max(interimList);
     }
 }

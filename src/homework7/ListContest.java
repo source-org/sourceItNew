@@ -43,10 +43,10 @@ public class ListContest implements Operations {
         int size = linkedList.size();
         LinkedList <T> copyLinkedList = new LinkedList<>();
         //list 3000 0-999 ->0; 1000 - 1999 -> 1; 2000-2999 -> 2
-        for (int j = 0; j < size-1; j++) {
-            if (j <= size/2-1 || j >= size/2+999) {
+        for (int j = linkedList.size()/2-1; j < linkedList.size()/2+999; j++) {
+            //if (j <= size/2-1 || j >= size/2+999) {
                 copyLinkedList.add(linkedList.get(j));
-            }
+            //}
         }
         //list 2000 el; 0-999 -> 0; 1000-1499 ->1; 1500-1999->2
         T element = copyLinkedList.get(copyLinkedList.size()-1);
