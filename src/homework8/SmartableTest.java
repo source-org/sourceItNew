@@ -2,15 +2,16 @@ package homework8;
 
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
-/**
- * Created by AlexS on 14.10.2017.
- */
 public class SmartableTest {
     private static Map<String, String> getUniqueMap() {
         Map<String, String> mapUnique = new HashMap<>();
@@ -113,7 +114,7 @@ public class SmartableTest {
     }
 
     @Test
-    public void removeEvenLength() {
+    public void testRemoveEvenLength() {
         //arrange
         SmartableImpl sm = new SmartableImpl();
         Set<String> initialSet = new HashSet<>();
