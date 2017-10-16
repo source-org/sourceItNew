@@ -8,11 +8,11 @@ import java.util.Set;
  */
 public interface Smartable {
 
-    void letterFounder(String phrase);
+    Map<Character, Integer> letterFounder(String phrase);
 
     boolean isUnique(Map<String, String> map);
 
-    Map<String, String> intersect(Map<String, String> map1, Map<String, String> map2);
+    Map<String, Integer> intersect(Map<String, Integer> map1, Map<String, Integer> map2);
 
     Set<String> removeEvenLength(Set<String> set);
 
