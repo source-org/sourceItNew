@@ -77,8 +77,8 @@ public class SmartableTest {
         SmartableImpl sm = new SmartableImpl();
         Map<Character, Integer> resultMap = sm.letterFounder(phrase);
         //action
-        for(Character key : resultMap.keySet()){
-            System.out.println(key+" "+resultMap.get(key));
+        for (Character key : resultMap.keySet()) {
+            System.out.println(key + " " + resultMap.get(key));
         }
         //assertion
         assertEquals(14, resultMap.size());
