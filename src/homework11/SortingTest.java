@@ -16,8 +16,9 @@ public class SortingTest {
 
     private final ArrayList <String> arrayList = new ArrayList<>();
     private final ArrayList<Person> personArray= new ArrayList<>();
-    private final int simpleArray[] = {1,5,2,9,14,90,5};
-    private final int sortedSimpleArray[] = {1,2,5,5,9,14,90};
+    private final int simpleArray[] = {1,5,2,9,3,90,5,-2,0};
+    private final int sortedSimpleArray[] = {-2,0,1,2,3,5,5,9,90};
+
 
     @Before
     public void setIntArrayList () {
@@ -59,6 +60,28 @@ public class SortingTest {
        // assertEquals("Mike",arrayList.get(4));
        // assertEquals("Mary",personArray.get(1));
        // assertEquals("Kate",personArray.get(2));
+    }
+    @Test
+    public void testInsertSort() {
+        //arrange
+        Sorting sort = new Sorting();
+        //action
+        sort.insertSort(simpleArray);
+        //assertion
+        assertArrayEquals(sortedSimpleArray,simpleArray);
+
+
+    }
+    @Test
+    public void testQuickSort() {
+        //arrange
+        Sorting sort = new Sorting();
+
+        //action
+        sort.setInitArray(simpleArray);
+        sort.quickSort(simpleArray);
+        //assertion
+        assertArrayEquals(sortedSimpleArray,simpleArray);
 
 
     }
