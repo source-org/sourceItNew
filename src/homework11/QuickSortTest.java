@@ -5,19 +5,19 @@ package homework11;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import sun.plugin.javascript.navig.Array;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class SortingTest {
+public class QuickSortTest {
 
     private final ArrayList <String> arrayList = new ArrayList<>();
     private final ArrayList<Person> personArray= new ArrayList<>();
-    private final int simpleArray[] = {1,5,2,9,3,90,5,-2,0};
-    private final int sortedSimpleArray[] = {-2,0,1,2,3,5,5,9,90};
+    private final int simpleArray[] = {1,5,2,9,3,90,6,-2,0};
+    private final int sortedSimpleArray[] = {-2,0,1,2,3,5,6,9,90};
 
 
     @Before
@@ -43,10 +43,11 @@ public class SortingTest {
     @Test
     public void testBubbleSort() throws NullPointerException {
         //arrange
-        Sorting sort = new Sorting();
+        BubbleSort sort = new BubbleSort();
         Long startTimer = System.currentTimeMillis();
         //action
-        sort.bubbleSort(arrayList);
+        sort.bubbleSortName(arrayList);
+        System.out.println(arrayList.toString());
         sort.bubbleSort(personArray);
         sort.bubbleSort(simpleArray);
         System.out.println("operation with int []: "+(System.currentTimeMillis()-startTimer)+" ms");
@@ -64,7 +65,7 @@ public class SortingTest {
     @Test
     public void testInsertSort() {
         //arrange
-        Sorting sort = new Sorting();
+        InsertSort sort = new InsertSort();
         //action
         sort.insertSort(simpleArray);
         //assertion
@@ -75,13 +76,12 @@ public class SortingTest {
     @Test
     public void testQuickSort() {
         //arrange
-        Sorting sort = new Sorting();
+        QuickSort sort = new QuickSort();
 
         //action
-        sort.setInitArray(simpleArray);
-        sort.quickSort(simpleArray);
+        int [] result = sort.quickSort(simpleArray);
         //assertion
-        assertArrayEquals(sortedSimpleArray,simpleArray);
+        assertArrayEquals(sortedSimpleArray,result);
 
 
     }
